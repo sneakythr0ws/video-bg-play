@@ -1,0 +1,20 @@
+{
+  "name": "video-bg-play",
+  "version": "1.8.1",
+  "private": true,
+  "description": "Firefox add-on to keep videos playing in the background",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.2",
+    "web-ext": "^8.2.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "fix": "npm run lint:fix && npm run format",
+    "validate": "web-ext lint",
+    "check": "npm run lint && npm run format:check && npm run validate"
+  }
+}
