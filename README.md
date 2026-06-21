@@ -33,3 +33,29 @@ As a demonstration, the content script currently injects itself to the following
 
 * youtube.com and youtube-nocookie.com
 * vimeo.com
+* rutube.ru
+
+## How it works on Rutube
+
+On Rutube the add-on loads a dedicated platform adapter (`adapters/rutube.js`) that applies the same shared Page Visibility patches and additionally:
+
+* blocks `blur`, `focus`, `pagehide`, and `freeze` events before they reach the player scripts;
+* wraps `IntersectionObserver` so that the `<video>` / player element always appears to be in the viewport;
+* guards `fullscreenchange` events in case Rutube pauses playback when exiting fullscreen;
+* observes the DOM for dynamically inserted player nodes and re-initializes itself on SPA navigation.
+
+Diagnostic logging is available by setting `const DEBUG = false` to `true` at the top of `adapters/rutube.js`; logs are prefixed with `[video-bg-play][rutube]`.
+
+## Limitations
+
+* The add-on is built for Firefox and uses `document.wrappedJSObject`, which is not available in Chromium-based browsers.
+* If Rutube performs visibility checks inside a cross-origin iframe, a Web Worker, or via `postMessage`, DOM-level patches may not be sufficient.
+* Site updates can change player selectors or introduce new pause mechanisms.
+
+## Manual verification (Rutube)
+
+1. Open any video on `https://rutube.ru`.
+2. Start playback.
+3. Switch to another tab — audio should continue.
+4. Lock the screen or switch to another app — audio should continue.
+5. Navigate to another video without reloading the page — playback should keep working in the background.

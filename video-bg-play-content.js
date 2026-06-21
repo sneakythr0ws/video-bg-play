@@ -10,14 +10,7 @@ const IS_VIMEO = window.location.hostname.search(/(?:^|.+\.)vimeo\.com/) > -1;
 const IS_ANDROID = window.navigator.userAgent.indexOf('Android') > -1;
 
 // Page Visibility API
-if (IS_ANDROID || !IS_DESKTOP_YOUTUBE) {
-  Object.defineProperties(document.wrappedJSObject, {
-    hidden: { value: false },
-    visibilityState: { value: 'visible' },
-  });
-}
-
-window.addEventListener('visibilitychange', (evt) => evt.stopImmediatePropagation(), true);
+window.VideoBgPlayCore.patchPageVisibility(IS_ANDROID || !IS_DESKTOP_YOUTUBE);
 
 // Fullscreen API
 if (IS_VIMEO) {

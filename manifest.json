@@ -20,7 +20,12 @@
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*", "*://*.youtube-nocookie.com/*", "*://*.vimeo.com/*"],
-      "js": ["video-bg-play-content.js"],
+      "js": ["core/patches.js", "video-bg-play-content.js"],
+      "all_frames": true
+    },
+    {
+      "matches": ["*://*.rutube.ru/*"],
+      "js": ["core/patches.js", "adapters/rutube.js"],
       "all_frames": true
     }
   ]
