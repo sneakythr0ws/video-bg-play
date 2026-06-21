@@ -1,22 +1,30 @@
 {
-  "project": {
-    "name": "video-bg-play",
-    "type": "firefox-webextension",
-    "description": "Firefox add-on that injects a content script to block Page Visibility API events and keep background video playback working on YouTube and Vimeo.",
-    "notes": [
-      "Manifest V2 Firefox extension for Android.",
-      "Single content script: video-bg-play-content.js (vanilla JS, not a module).",
-      "Packaging is done via Makefile -> video-bg-play.xpi; no bundler.",
-      "Code style is enforced by ESLint and Prettier (single quotes, printWidth 100).",
-      "web-ext lint validates the extension package; Manifest V2 deprecation warnings are expected."
-    ]
-  },
-  "commands": {
-    "check": "make check",
-    "lint": "make lint",
-    "lint:fix": "npm run lint:fix",
-    "format": "make format",
-    "validate": "make validate",
-    "build": "make video-bg-play.zip"
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md"],
+  "command": {
+    "check": {
+      "description": "Run project checks (make check)",
+      "template": "Run `make check` in this project and report the results. Do not modify any files unless asked."
+    },
+    "lint": {
+      "description": "Run linters (make lint)",
+      "template": "Run `make lint` in this project, show the full output, and summarize any issues found. Do not fix anything unless asked."
+    },
+    "lint:fix": {
+      "description": "Run lint autofix (npm run lint:fix)",
+      "template": "Run `npm run lint:fix` in this project to automatically fix lint issues. Report what was changed."
+    },
+    "format": {
+      "description": "Format code (make format)",
+      "template": "Run `make format` in this project to format the codebase. Report what was changed."
+    },
+    "validate": {
+      "description": "Validate extension package (make validate)",
+      "template": "Run `make validate` in this project and report the results. Do not modify files unless asked."
+    },
+    "build": {
+      "description": "Build extension package (make video-bg-play.zip)",
+      "template": "Run `make video-bg-play.zip` in this project to build the extension package. Report the build output and any artifacts created."
+    }
   }
 }

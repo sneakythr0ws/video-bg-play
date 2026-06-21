@@ -1,0 +1,11 @@
+# video-bg-play
+
+Firefox add-on that injects a content script to block Page Visibility API events and keep background video playback working on YouTube and Vimeo.
+
+## Project notes
+
+- Manifest V2 Firefox extension for Android.
+- Single content script: `video-bg-play-content.js` (vanilla JS, not a module).
+- Packaging is done via `Makefile` -> `video-bg-play.xpi`; no bundler.
+- Code style is enforced by ESLint and Prettier (single quotes, `printWidth: 100`).
+- `web-ext lint` validates the extension package; Manifest V2 deprecation warnings are expected.
